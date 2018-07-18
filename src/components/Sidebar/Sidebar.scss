@@ -1,0 +1,22 @@
+#sidebar {
+  grid-area: sidebar;
+  padding: 5px 0 0 5px;
+  border-right: 1px solid #3f3f3f;
+  height: 100%;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+
+    span {
+      margin: auto 0;
+      padding-left: 5px;
+    }
+
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
