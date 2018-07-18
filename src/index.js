@@ -1,32 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-import './index.css'
-import App from './App'
-import registerServiceWorker from './registerServiceWorker'
-import reducers from './reducers'
-import handleNewMessage from './sagas'
-import setupSocket from './sockets'
-import { username, avatar } from './utils/name'
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import reducers from './reducers';
+import handleNewMessage from './sagas';
+import setupSocket from './sockets';
+import { username, avatar } from './utils/index';
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    reducers,
-    applyMiddleware(sagaMiddleware)
-)
+  reducers,
+  applyMiddleware(sagaMiddleware),
+);
 
-const socket = setupSocket(store.dispatch, {username, avatar})
+const socket = setupSocket(store.dispatch, { username, avatar });
 
-sagaMiddleware.run(handleNewMessage, { socket, username })
+sagaMiddleware.run(handleNewMessage, { socket, username });
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-)
-registerServiceWorker()
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
+registerServiceWorker();
